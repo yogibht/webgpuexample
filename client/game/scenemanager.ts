@@ -1,3 +1,5 @@
+/// <reference types="@webgpu/types" />
+
 import { Renderer } from "./renderer";
 import { findFPS } from "@utilities/general";
 import { Vector } from "@utilities/helpers";
@@ -21,7 +23,7 @@ interface IRenderProps {
 class SceneManager {
 
 	private canvas: HTMLCanvasElement;
-	private renderContext: CanvasRenderingContext2D;
+	// private renderContext: GPUCanvasContext;
 
 	private renderer: Renderer;
 
@@ -38,8 +40,6 @@ class SceneManager {
 		this.props = this.setupDefaultProps(smProps);
 
 		this.canvas = canvas;
-			this.renderContext = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-		this.renderer = new Renderer(this.renderContext);
 	}
 
 	private setupDefaultProps(props?: ISMProps): ISMProps{
@@ -64,9 +64,29 @@ class SceneManager {
 		}
 	}
 
+	private async setupRenderContext(): Promise<void>{
+		const adapter = await window.navigator?.gpu?.requestAdapter() as GPUAdapter;
+		const device: GPUDevice = await adapter?.requestDevice();
+		if(!device){
+			throw new Error("Could not find WebGPU. Please enabled WebGPU!!!");
+		}
+		else{
+			const presentationFormat = window.navigator?.gpu.getPreferredCanvasFormat();
+			const renderContext = this.canvas.getContext("webgpu") as GPUCanvasContext;
+			renderContext?.configure({
+				device,
+				format: presentationFormat
+			});
+			this.renderer = new Renderer(renderContext, device, presentationFormat);
+		}
+	}
+
 	public async init(): Promise<void | string>{
 		try{
 			await this.setDefaultRenderProps();
+
+			await this.setupRenderContext();
+			this.renderer.init();
 
 			this.loop(performance.now());
 

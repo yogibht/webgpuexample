@@ -1,7 +1,7 @@
 {
-    "name": "antcolonysim",
+    "name": "webgputest",
     "version": "1.0.0",
-    "description": "Ant Colony Simulation",
+    "description": "Simple WebGPU triangle render test",
     "private": true,
     "scripts": {
         "cleanup": "rimraf dist/!(*.gitkeep)",
@@ -20,6 +20,7 @@
         "@types/webpack-env": "^1.18.0",
         "@typescript-eslint/eslint-plugin": "^5.44.0",
         "@typescript-eslint/parser": "^5.44.0",
+        "@webgpu/types": "^0.1.30",
         "babel-loader": "^9.1.2",
         "css-loader": "^6.7.2",
         "eslint": "^8.28.0",

@@ -6,7 +6,7 @@ module.exports = {
 	target: "node",
     mode: "development",
     entry: {
-        "antcolonysim": [ path.resolve(__dirname, "client", "index.ts") ]
+        "webgputest": [ path.resolve(__dirname, "client", "index.ts") ]
     },
     output: {
         path: path.resolve(__dirname, "dist"),
