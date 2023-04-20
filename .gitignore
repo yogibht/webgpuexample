@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+node_modules/*
+dist/*
+!dist/.gitkeep
+!dist/workers
+dist/workers/*
+!dist/workers/.gitkeep

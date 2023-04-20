@@ -1,0 +1,52 @@
+{
+    "include": ["client", "server", "workers", "declarations.d.ts"],
+	"exclude": ["dist"],
+    "compilerOptions": {
+        "outDir": "dist",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "target": "esnext",
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "checkJs": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "declaration": false,
+        "incremental": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": false,
+        "noImplicitReturns": false,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "importsNotUsedAsValues": "error",
+		"ignoreDeprecations": "5.0",
+        "baseUrl": ".",
+		"paths": {
+			"@assets/*": ["client/assets/*"],
+			"@game/*": ["client/game/*"],
+			"@gui/*": ["client/gui/*"],
+			"@utilities/*": ["client/utilities/*"],
+			"@workers/*": ["workers/*"],
+            "@env": ["server/env.ts"]
+        }
+    },
+	"typeRoots": [
+        "./node_modules/@types"
+    ]
+}

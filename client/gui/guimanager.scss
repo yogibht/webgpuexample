@@ -1,0 +1,32 @@
+@import "~@assets/styles/globals.scss";
+
+#maincanvas{
+    border: 1px solid #0958b3;
+}
+
+#fps-display {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #011020;
+	color: #fff;
+	width: 60px;
+	height: 25px;
+
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+}
+
+#config-info {
+	display: table;
+
+	.tr{
+		display: table-row;
+	}
+
+	.td{
+		display: table-cell;
+	}
+}
